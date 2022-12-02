@@ -51,7 +51,7 @@ function EditCard() {
       front: card.front,
       back: card.back,
     });
-    history.goBack();
+    history.goBack(-1);
   }
 
   let deckName = deck?.name ? deck.name : "loading...";

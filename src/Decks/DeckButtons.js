@@ -57,7 +57,7 @@ function DeckButtons({ id, deleteHandler }) {
       <div className="btn-group" role="group" aria-label="Delete group">
         <button
           type="button"
-          onClick={() => deleteHandler(id)}
+          onClick={() => deleteHandler(deckId, id)}
           className="btn btn-danger"
         >
           <span className="oi oi-trash"></span>

@@ -9,17 +9,12 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "laksfjs",
-      "description": "wlejfwklealdf",
-      "id": 3
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.sdfds",
+      "front": "Differentiate between Real DOMasdf and Virtual DOM.sdfds",
       "back": "sdfsd",
       "deckId": 1
     },

@@ -23,19 +23,31 @@ function Decks() {
     fetchDecks();
   }, []);
 
-  const deleteHandler = (id) => {
+  const deleteHandler = async (deckId, id) => {
+    //console.log("decksfile");
+    //console.log("id", id);
+    //console.log("deckId", deckId);
     if (
       window.confirm(`Delete this deck?\n\nYou will not be able to recover it.`)
     ) {
-      deleteDeck(id);
-      setDecks((selectedDeck) => {
-        selectedDeck.filter((deck) => deck.id !== id);
-      });
+      await deleteDeck(id);
+      //console.log(id);
+      const updatedDeck = await listDecks(id);
+      // console.log(updatedDeck);
+      setDecks(updatedDeck);
+      // setDecks((selectedDeck) => {
+      //   selectedDeck.filter((deck) => {
+      //     console.log(deck.id, id)
+      //     return deck.id !== id});
+      // });
+      //console.log("delete");
+      history.push(0);
       history.push("/");
     }
   };
 
   const decksDisplay = decks.map((deck) => {
+    //console.log("2decksdisplay", deck.id);
     return (
       <Deck
         key={deck?.id}
@@ -48,7 +60,9 @@ function Decks() {
     );
   });
 
-  function DisplayDecks({ decks }) {
+  function DisplayDecks({ decks, deckId }) {
+    //console.log("1displaydecks", deckId);
+    // undefined
     return (
       <div className="container">
         <Link to="/decks/new">
@@ -62,10 +76,11 @@ function Decks() {
   }
 
   return (
-    <div className="container" style={{paddingBottom: "30px"}}>
+    <div className="container" style={{ paddingBottom: "30px" }}>
       <Switch>
         <Route exact path="/">
           <DisplayDecks decks={decksDisplay} deckId={deckId} />
+          {/* deck id is undefinded */}
         </Route>
         <Route path="/decks/:deckId/cards/:cardId/edit">
           <EditCard />

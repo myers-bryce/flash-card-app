@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams , useHistory } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api/index";
 import CardForm from "../Forms/CardForm";
 
 function NewCard() {
+  const history = useHistory()
   const { deckId } = useParams();
 
   const formReset = {
@@ -44,6 +45,7 @@ function NewCard() {
     event.preventDefault();
     await createCard(deckId, newCard);
     setNewCard(formReset);
+    history.goBack(-1)
   }
 
   let deckName = deck?.name ? deck?.name : "loading...";
